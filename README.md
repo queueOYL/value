@@ -1,6 +1,4 @@
-# queueOYL_value(编辑中)
-
-使用tensroflow调用keras完成神经网络的搭建
+# 使用tensroflow调用keras完成神经网络的搭建  (queueOYL/value)
 
 数据集采用 mnist
 
