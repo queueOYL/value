@@ -1,87 +1,16 @@
 # queueOYL_value(编辑中)
 
-在这里我们将用tensorflow调用keras来完成模型的搭建，用mnist模型训练并且验证
+使用tensroflow调用keras完成神经网络的搭建
+
+数据集采用 mnist
 
 keras官网：keras.io
 
-1. mnist数据的导入与处理，不过多阐述
-      (minst：包含6w张数字图片，图片规格为28*28，映射到个位数上)
-      
-2. 开始构建神经网络的框架(keras.models.Sequential)：
-      a.  因为数据集为图形，我们可以理解为矩阵(28*28)，处理时将矩阵中每个值映射到[0,1]上
-          
-      b.  在选择网络层api时，需要注意输入层的数据格式，
-          我们这里选择 全连接层(Dense), 但Dense接受数据需要为一维‘向量’,
-          所以我们需要在输入层与Dense中间插入 Flatten 对数据进行降维
-          
-      c.  Flatten: 用input_shape(28,28)传入矩阵后，将矩阵降维为‘向量’，
-          经过该层处理，传入到Dense的数据形式就符合要求了
-          (该方法还可以用在卷积层到Dense层，总之就是将多维数据处理为一维)
-      
-      d.  处理好输入层部分后，接下来的网络就可以如法炮制了，按自己想法来搭建，
-          layers提供了多种激活函数，根据自己需求添加(Dense默认不添加激活函数)
-          对mnist而言，并不需要多少层，简单的几层效果就非常不错了
-          
-      e.  Dropout: 设置一个概率P，让中间部分神经元已P的概率失活，能降低神经网络过拟合的风险
-      
-      f.  输出层神经元对应目标结果的标签数，mnist中显然是 0—9 共10个
-      
-3. 配置模型的训练方法(compile):
-      a.  优化器：optimizer
-      b.  损失函数：loss
-      c.  评估训练效果的度量函数：metrics
-      三者在keras中都有成型的模块，可直接调用，也可以自定义
-            optimizer模块：SGD，Adam ...
-            losses模块：mean_squared_error , mean_absolute_error , squared_hinge ...
-                        (get.py文件包含部分源代码)
-            metrics模块：accuracy ... 更多请访问官网：https://keras.io/api/metrics/
-            
-4.训练模型并且检验：
-      mnist的数据量并不大，建议直接采用fit，方便快捷
-      
-      fit参数中，比较重要的如下
-      x,y : 训练集样本和标签
-      batch_size：将样本划分为的个数
-                  例如batch_size为60，mnist有60000个数据，那么划分后将产生60个1000的小样本
-      epochs：训练轮数
-      validation_data：指定测试集
-      validation_split：设置一个0—1的比例，表示从训练集中划分出多少作为测试集合，与validation_data二选一使用
-      
-5.训练模型的导出：
-      keras自带导出方法
-      使用命令 xxx.save('yyy.h5')  例如：model.save('DenseModel.h5')
-      xxx为模型的名称，yyy为导出的模型文件名
-      导出后，文件夹目录下会出现 h5格式的目标文件 
-      该文件包含以下内容：
-            模型结构，模型权重，配置的训练方法，优化器状态
-   
-6.训练模型的加载：
-      使用keras.models.load_model加载模型的文件
-      以 5 中举例的导出的模型文件为例，别处加载模型时： model = tf.keras.models.load_model('DenseModel.h5')
-      注意，可能因为tensorflow版本问题报错
- 
- 
- 可以使用print(model.summary())打印结构
- 例如：
- 
- Model: "sequential_1"
-_________________________________________________________________
- Layer (type)                Output Shape              Param #   
-=================================================================
- flatten_1 (Flatten)         (None, 784)               0         
-                                                                 
- dense_2 (Dense)             (None, 128)               100480    
-                                                                 
- dropout_1 (Dropout)         (None, 128)               0         
-                                                                 
- dense_3 (Dense)             (None, 64)                8256      
-                                                                 
- dense_4 (Dense)             (None, 10)                650       
-                                                                 
-=================================================================
-Total params: 109,386
-Trainable params: 109,386
-Non-trainable params: 0
-_________________________________________________________________
-None
+1. mnist数据的导入与处理
+2. 开始构建神经网络的框架(keras.models.Sequential)
+3. 配置模型的训练方法(compile)
+4. 训练模型并且检验
+5. 训练模型的导出
+6. 训练模型的加载
 
+具体步骤在  “ 搭建步骤.txt ” 文档中
