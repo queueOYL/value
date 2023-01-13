@@ -1,4 +1,4 @@
-# 使用神经网络实现数字图片的判断 (使用tensroflow调用keras完成搭建)，  (queueOYL/value)
+# 使用神经网络实现数字图片的判断 (使用tensorflow调用keras完成搭建)，  (queueOYL/value)
 
 数据集采用 mnist
 
