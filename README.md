@@ -4,6 +4,9 @@
 
 keras官网：keras.io
 
+主代码文件为 Dense.py
+测试代码文件 test.py
+
 1. mnist数据的导入与处理
 2. 开始构建神经网络的框架(keras.models.Sequential)
 3. 配置模型的训练方法(compile)
